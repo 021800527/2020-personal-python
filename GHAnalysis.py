@@ -3,9 +3,10 @@ import os
 import argparse
 
 
-def initialization(path):
-    json_list = []
-    dict_address = path
+# 代码规范化之我不会用__init__
+def initialization(self, path):
+    self.json_list = []
+    self.dict_address = path
     user_4event_num = {}
     repo_4event_num = {}
     user_repo_4event_num = {}
@@ -101,15 +102,19 @@ if __name__ == '__main__':
     parser.add_argument("-i", "--address")
     parser.add_argument("-r", "--repo")
     args = parser.parse_args()
+    # 如果是输入的是地址 则地址不为空
     if args.address is not None:
-        initialization(args.address)
+        initialization( args.address)
         if args.address is None and not os.path.exists('1.json') and not os.path.exists('2.json') and not os.path.exists('3.json'):
             print("初始化失败,本地文件不可写入")
         else:
             print("初始化成功")
+    # 如果用户和时间不空，但是地址空了 说明查询的是用户的事件个数
     if args.user is not None and args.event is not None and args.repo is None:
         inquire_user_event(args.user,args.event)
+    # 如果项目和时间不空，但是偏偏用户和地址空了，说明查询的是各个项目的时间个数
     if args.repo is not None and args.event is not None and args.user is None:
         inquire_repo_event(args.repo, args.event)
+    # 如果项目和用户和事件不空，则是查询各个用户在各个事件中的
     if args.user is not None and args.repo is not None and args.event is not None:
         inquire_user_repo_event(args.user, args.repo, args.event)
