@@ -115,6 +115,6 @@ if __name__ == '__main__':
     # 如果项目和时间不空，但是偏偏用户和地址空了，说明查询的是各个项目的时间个数
     if args.repo is not None and args.event is not None and args.user is None:
         inquire_repo_event(args.repo, args.event)
-    # 如果项目和用户和事件不空，则是查询各个用户在各个事件中的
+    # 如果项目和用户和事件不空，则是查询各个用户在各个项目中的事件个数
     if args.user is not None and args.repo is not None and args.event is not None:
         inquire_user_repo_event(args.user, args.repo, args.event)
