@@ -4,9 +4,9 @@ import argparse
 
 
 # 代码规范化之我不会用__init__
-def initialization(self, path):
-    self.json_list = []
-    self.dict_address = path
+def initialization(spath):
+    json_list = []
+    dict_address = path
     user_4event_num = {}
     repo_4event_num = {}
     user_repo_4event_num = {}
